@@ -1,6 +1,6 @@
 package parser;
 
-import lombok.AllArgsConstructor;
+import controller.Controller;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -14,7 +14,11 @@ import java.util.ArrayList;
 
 public class SearchParser {
 
-    private SearchRepository searchRepository;
+    private final SearchRepository searchRepository;
+
+    public SearchParser(Controller controller) {
+        searchRepository = new SearchRepository(controller);
+    }
 
     public void parse(File file) throws IOException, ParseException {
         JSONParser jsonParser = new JSONParser();
@@ -30,14 +34,17 @@ public class SearchParser {
                 //...
             } else if (object.containsKey("productName")) {
                 String name = object.get("productName").toString();
-                String min = object.get("minTimes").toString();
+                int min = Integer.parseInt(object.get("minTimes").toString());
+                ArrayList<String[]> customers = searchRepository.searchByMinTimesPurchase(name, min);
                 //...
             } else if (object.containsKey("minExpenses")) {
-                String min = object.get("minExpenses").toString();
-                String max = object.get("maxExpenses").toString();
+                int min = Integer.parseInt(object.get("minExpenses").toString());
+                int max = Integer.parseInt(object.get("maxExpenses").toString());
+                ArrayList<String[]> customers = searchRepository.searchByInterval(min, max);
                 //...
             } else if (object.containsKey("badCustomers")) {
-                String size = object.get("badCustomers").toString();
+                int size = Integer.parseInt(object.get("badCustomers").toString());
+                ArrayList<String[]> customers = searchRepository.searchBadCustomer(size);
                 //...
             }
         }
