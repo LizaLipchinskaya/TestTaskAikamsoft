@@ -1,12 +1,9 @@
-package dto;
+package dto.search;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class Customer {
-    String lastName;
-
-    String firstName;
+public abstract class Criteria {
 }

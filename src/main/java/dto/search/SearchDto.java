@@ -1,4 +1,4 @@
-package dto;
+package dto.search;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -8,7 +8,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 public class SearchDto {
-    String type;
+    private String type;
 
-    List<Result> results;
+    private List<Result> results;
 }

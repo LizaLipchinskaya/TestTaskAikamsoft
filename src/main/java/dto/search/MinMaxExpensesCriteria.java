@@ -1,4 +1,4 @@
-package dto;
+package dto.search;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -6,7 +6,7 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class MinMaxExpensesCriteria extends Criteria {
-    Integer minExpenses;
+    private Integer minExpenses;
 
-    Integer maxExpenses;
+    private Integer maxExpenses;
 }
