@@ -2,7 +2,7 @@ package parser;
 
 import com.google.gson.JsonSyntaxException;
 import controller.Controller;
-import dto.*;
+import dto.search.*;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -23,11 +23,11 @@ public class SearchParser {
         searchRepository = new SearchRepository(controller);
     }
 
-    private List<Customer> createCustomerList(ArrayList<String[]> customers) {
-        List<Customer> customerList = new ArrayList<>();
+    private List<CustomerSearch> createCustomerList(ArrayList<String[]> customers) {
+        List<CustomerSearch> customerList = new ArrayList<>();
 
-        for(String[] customer : customers) {
-            customerList.add(new Customer(customer[0], customer[1]));
+        for (String[] customer : customers) {
+            customerList.add(new CustomerSearch(customer[0], customer[1]));
         }
 
         return customerList;
