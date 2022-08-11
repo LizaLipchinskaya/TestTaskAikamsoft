@@ -1,0 +1,28 @@
+{
+  "type": "stat",
+  "totalDays": 783,
+  "customers": [
+    {
+      "name": "Иванов Иван",
+      "purchases": [
+        {
+          "name": "Минеральная вода",
+          "expenses": 30
+        }
+      ],
+      "totalExpenses": 30
+    },
+    {
+      "name": "Петров Пётр",
+      "purchases": [
+        {
+          "name": "Минеральная вода",
+          "expenses": 30
+        }
+      ],
+      "totalExpenses": 30
+    }
+  ],
+  "totalExpenses": 60,
+  "avgExpenses": 30.0
+}
