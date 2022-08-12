@@ -1,8 +1,8 @@
 package parser;
 
-import com.google.gson.JsonSyntaxException;
 import controller.Controller;
 import dto.search.*;
+import exception.BadJsonException;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -33,7 +33,7 @@ public class SearchParser {
         return customerList;
     }
 
-    public SearchDto parse(File file) throws IOException, ParseException {
+    public SearchDto parse(File file) throws ParseException, BadJsonException, IOException {
         JSONParser jsonParser = new JSONParser();
         JSONObject jsonObject = (JSONObject) jsonParser.parse(new FileReader(file));
         JSONArray jsonArray = (JSONArray) jsonObject.get("criterias");
@@ -65,7 +65,7 @@ public class SearchParser {
                 ArrayList<String[]> customers = searchRepository.searchBadCustomer(size);
                 searchDto.getResults().add(new Result(new BadCustomerCriteria(size), createCustomerList(customers)));
             } else {
-                throw new JsonSyntaxException("Json содержит синтаксические ошибки");
+                throw new BadJsonException("Json содержит синтаксические ошибки");
             }
         }
         return searchDto;

@@ -6,6 +6,8 @@ import dto.stat.CustomerStat;
 import dto.stat.Purchase;
 import dto.stat.StatDto;
 import dto.stat.StatInputDto;
+import exception.BadJsonException;
+import org.decimal4j.util.DoubleRounder;
 import org.json.simple.parser.ParseException;
 import repository.StatRepository;
 
@@ -58,12 +60,18 @@ public class StatParser {
         return customerList;
     }
 
-    public StatDto parse(File file) throws IOException, ParseException {
+    public StatDto parse(File file) throws IOException, ParseException, BadJsonException {
         StatDto statDto = new StatDto("stat", 0, new ArrayList<>(), 0, 0.0);
         StatInputDto statInputDto = new Gson().fromJson(new FileReader(file), StatInputDto.class);
 
         String startDate = statInputDto.getStartDate();
         String endDate = statInputDto.getEndDate();
+
+        String rightDate = "\\d{4}-\\d{2}-\\d{2}";
+
+        if (!startDate.matches(rightDate) || !endDate.matches(rightDate)) {
+            throw new BadJsonException("Неверный формат даты");
+        }
 
         int countOfWorkingDay = statRepository.countDay(startDate, endDate);
         ArrayList<String[]> customers = statRepository.findCustomer(startDate, endDate);
@@ -73,7 +81,7 @@ public class StatParser {
 
         statDto.setTotalDays(countOfWorkingDay);
         statDto.setTotalExpenses(totalExpenses);
-        statDto.setAvgExpenses(avgExpenses);
+        statDto.setAvgExpenses(DoubleRounder.round(avgExpenses, 2));
         statDto.setCustomers(createCustomerList(customers, totalExpensesForCustomer));
 
         return statDto;
