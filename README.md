@@ -22,8 +22,8 @@
 + Упакуйте в jar-файл: mvn package
 
 ### 4. Примеры запуска программы :
-+ java -jar testTaskAikamsoft.jar search input.json output.json
-+ java -jar testTaskAikamsoft.jar stat inputStat.json outputStat.json
++ java -jar TestTaskAikamsoft-1.0.jar search input.json output.json
++ java -jar TestTaskAikamsoft-1.0.jar stat inputStat.json outputStat.json
 
 ### 5. Примеры входных и выходных файлов
 Примеры можно найти внутри проекта в папке src/main/resources
