@@ -20,7 +20,7 @@ public class Controller {
         }
     }
 
-    public Connection getConnection()  {
+    public Connection getConnection() {
         if (connection != null) {
             return connection;
         }

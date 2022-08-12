@@ -3,6 +3,30 @@
   "totalDays": 783,
   "customers": [
     {
+      "name": "Иванов Михаил",
+      "purchases": [
+        {
+          "name": "Колбаса",
+          "expenses": 200
+        },
+        {
+          "name": "Говядина",
+          "expenses": 400
+        }
+      ],
+      "totalExpenses": 600
+    },
+    {
+      "name": "Долгий Юрий",
+      "purchases": [
+        {
+          "name": "Минеральная вода",
+          "expenses": 90
+        }
+      ],
+      "totalExpenses": 90
+    },
+    {
       "name": "Иванов Иван",
       "purchases": [
         {
@@ -21,8 +45,18 @@
         }
       ],
       "totalExpenses": 30
+    },
+    {
+      "name": "Иванов Роман",
+      "purchases": [
+        {
+          "name": "Колбаса",
+          "expenses": 400
+        }
+      ],
+      "totalExpenses": 400
     }
   ],
-  "totalExpenses": 60,
-  "avgExpenses": 30.0
+  "totalExpenses": 1150,
+  "avgExpenses": 127.78
 }
